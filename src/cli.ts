@@ -1,10 +1,12 @@
 import { cmdAdd } from "./commands/add";
 import { cmdRemove } from "./commands/remove";
+import { cmdRestart } from "./commands/restart";
 import { log, logError } from "./util/log";
 
 const commands = {
   add: cmdAdd,
   remove: cmdRemove,
+  restart: cmdRestart,
 };
 
 export function runCommand(argv: string[]) {
