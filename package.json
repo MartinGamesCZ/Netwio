@@ -3,7 +3,8 @@
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
-    "start": "sudo $(which bun) run src/index.ts"
+    "start": "sudo $(which bun) run src/index.ts",
+    "build": "bun build --minify --compile --outfile dist/netwio src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
