@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { createIfNotExists, Format, getPath, Path } from "../util/path";
 
 export function initConfig() {
@@ -9,4 +9,14 @@ export function initConfig() {
 
 export function readRoutes() {
   return JSON.parse(readFileSync(getPath(Path.Routes), "utf-8"));
+}
+
+export function writeRoutes(
+  data: {
+    hostname: string;
+    target_addr: string;
+    target_port: number;
+  }[]
+) {
+  writeFileSync(getPath(Path.Routes), JSON.stringify(data, null, 2), "utf8");
 }

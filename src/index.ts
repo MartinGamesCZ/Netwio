@@ -5,6 +5,7 @@ import { startRouter } from "./router";
 import { launchService } from "./service";
 import { log, logError } from "./util/log";
 import { isRoot } from "./util/root";
+import { runCommand } from "./cli";
 
 if (!isRoot()) logError("You must run this script as root!", true);
 
@@ -14,11 +15,5 @@ else {
 
   if (!isRunning) logError("Service is not running!", true);
 
-  //logError("Invalid arguments!", true);
-
-  console.log("Restarting service...");
-
-  await axios
-    .get("http://service.netwio.local/$netwio/restart")
-    .catch(() => {});
+  runCommand(process.argv.slice(2));
 }
